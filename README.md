@@ -1,37 +1,15 @@
-## :bangbang: TO-DO list after creating repo from template:
+# xayn_readability
 
- - [ ] Create new flutter project
- - [ ] [Organizing a library package](https://dart.dev/guides/libraries/create-library-packages#organizing-a-library-package)
- - [ ] Replace all `project_name` with the corrent one in this file
- - [ ] Replace `repo name` with the corrent one in:
-   - [ ] this filein the 
-   - [ ] [contributing](#contributing-construction_worker_woman) `create an issue` link
- - [ ] Remove useless parts of this README
- - [ ] Check license
- - [ ] Specifying a plugin’s supported platforms. More [here](https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms)
- - [ ] Uncomment CI scripts in `.github/workflows` 
-   - [ ] Set the latest `Flutter version` inside all of them
-- [ ] Setup `repository settings` - branch rules, PR reviews, etc. Sadly, but it's not copied from the template repo... 
- - [ ] to enable `codeCov` - please ask Felix to enable it for this repository
- - [ ] Try to keep README page SIMPLE but USEFUL
- - [ ] Chgeck for [PUB POINTS](https://pub.dev/help/scoring#pub-points)
-   - [ ] Follow Dart file conventions(https://pub.dev/help/scoring#follow-dart-file-conventions)  (this one done, but doubel-check it)
-   - [ ] [Provide documentation](https://pub.dev/help/scoring#provide-documentation)
-   - [ ] [Support multiple platforms](https://pub.dev/help/scoring#support-multiple-platforms)
-   - [ ] [Pass static analysis](https://pub.dev/help/scoring#pass-static-analysis)
-   - [ ] [Support up-to-date dependencies](https://pub.dev/help/scoring#support-up-to-date-dependencies)
-   - [ ] [View pub points report](https://pub.dev/help/scoring#calculating-pub-points-prior-to-publishing) before publishing. Make sure we have all possible score :muscle:
- - [ ] Remove this `TODO list` from the ReadMe, when all above are done :wink:
+[![Pub](https://img.shields.io/pub/v/xayn_readability.svg)](https://pub.dartlang.org/packages/xayn_readability)
+[![codecov](https://codecov.io/gh/xaynetwork/xayn_readability/branch/main/graph/badge.svg)](https://codecov.io/gh/xaynetwork/xayn_readability)
+[![Build Status](https://github.com/xaynetwork/xayn_readability/actions/workflows/flutter_post_merge.yaml/badge.svg)](https://github.com/xaynetwork/xayn_readability/actions)
 
-----------
+Xayn readability provides the [reader mode widget](./lib/src/widgets/reader_mode.dart), which renders html content as pure Flutter widgets.
 
-# project_name
+The project transforms html content into `readable` html content, using a native dart port of
+[Mozilla's fantastic readability project](https://github.com/mozilla/readability).
 
-[![Pub](https://img.shields.io/pub/v/project_name.svg)](https://pub.dartlang.org/packages/project_name)
-[![codecov](https://codecov.io/gh/xaynetwork/flutter-open-source-repo-template/branch/main/graph/badge.svg)](https://codecov.io/gh/xaynetwork/flutter-open-source-repo-template)
-[![Build Status](https://github.com/xaynetwork/flutter-open-source-repo-template/actions/workflows/flutter_post_merge.yaml/badge.svg)](https://github.com/xaynetwork/flutter-open-source-repo-template/actions)
-
-Short description of the project: What, Why, When and How :rofl:
+The rendering to Flutter widgets is done using another great open source project, [flutter_widget_from_html_core](https://pub.dev/packages/flutter_widget_from_html_core).
 
 
 ----------
@@ -58,12 +36,12 @@ Add this to your package's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  project_name: `latest version`
+  xayn_readability: `latest version`
 ```
 
 after that, shoot it on the command line:
 
-```css
+```shell
 $ flutter pub get
 ```
 
@@ -88,26 +66,9 @@ Use case #3 (short description)
 	// add some code with ninja-comments here
 ```
 
- - please also give a try to the [example app](../main/example/) :stuck_out_tongue_winking_eye:
- - check full [documentation here](../documentation/)
+ - try out the [example](./example/lib/main.dart)
 
-[top :arrow_heading_up:](#project_name)
-
-----------
-
-## Visuals :heart_eyes_cat:
-
-Curious how it will be looking? :smirk:
-
- |                          |                          |
- | ------------------------ | ------------------------ |
- | case description #1      | case description #2      |
- | <img width="280" src="../main/visuals/coding.gif"> | <img width="280" src="../main/visuals/building.gif"> |
- |                          |                          |
- | case description #3      | case description #4      |
- | <img width="280" src="../main/visuals/tea.gif"> | <img width="280" src="../main/visuals/cosmos.gif"> |
-
-[top :arrow_heading_up:](#project_name)
+[top :arrow_heading_up:](#xayn_readability)
 
 ----------
 
@@ -121,7 +82,7 @@ Curious how it will be looking? :smirk:
 | `isEnabled`      | `bool`   	 	| `true`    	| Responsible for showing component as enabled.|
 | `key` 		   | `Key`          | `null`        | Controls how one widget replaces another widget in the tree. |
 
-[top :arrow_heading_up:](#project_name)
+[top :arrow_heading_up:](#xayn_readability)
 
 ----------
 
@@ -131,7 +92,7 @@ Curious how it will be looking? :smirk:
 
 Describe here well known problems and how they can be solved.
 
-[top :arrow_heading_up:](#project_name)
+[top :arrow_heading_up:](#xayn_readability)
 
 ----------
 
@@ -142,20 +103,20 @@ Describe here well known problems and how they can be solved.
 We're more than happy to accept pull requests :muscle:
 
  - check our [contributing](../main/.github/contributing.md) page
- - found a bug or have a question? Please [create an issue](https://github.com/xaynetwork/flutter-open-source-repo-template/issues/new/choose).
+ - found a bug or have a question? Please [create an issue](https://github.com/xaynetwork/xayn_readability/issues/new/choose).
 
 
 
-[top :arrow_heading_up:](#project_name)
+[top :arrow_heading_up:](#xayn_readability)
 
 ----------
 
 
 
 ## License :scroll:
-**project_name** is licensed under `Apache 2`. View [license](../main/LICENSE).
+**xayn_readability** is licensed under `Apache 2`. View [license](../main/LICENSE).
 
-[top :arrow_heading_up:](#project_name)
+[top :arrow_heading_up:](#xayn_readability)
 
 ----------
 
