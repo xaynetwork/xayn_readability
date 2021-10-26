@@ -1,0 +1,24 @@
+library element_extensions;
+
+export 'package:reader_mode/src/process_html/extensions/element/char_count.dart';
+export 'package:reader_mode/src/process_html/extensions/element/clean.dart';
+export 'package:reader_mode/src/process_html/extensions/element/clean_classes.dart';
+export 'package:reader_mode/src/process_html/extensions/element/clean_conditionally.dart';
+export 'package:reader_mode/src/process_html/extensions/element/clean_headers.dart';
+export 'package:reader_mode/src/process_html/extensions/element/clean_matched_nodes.dart';
+export 'package:reader_mode/src/process_html/extensions/element/clean_styles.dart';
+export 'package:reader_mode/src/process_html/extensions/element/fix_lazy_images.dart';
+export 'package:reader_mode/src/process_html/extensions/element/get_ancestors.dart';
+export 'package:reader_mode/src/process_html/extensions/element/get_next_node.dart';
+export 'package:reader_mode/src/process_html/extensions/element/has_child_block_element.dart';
+export 'package:reader_mode/src/process_html/extensions/element/has_single_tag.dart';
+export 'package:reader_mode/src/process_html/extensions/element/header_duplicates_title.dart';
+export 'package:reader_mode/src/process_html/extensions/element/is_single_image.dart';
+export 'package:reader_mode/src/process_html/extensions/element/is_without_content.dart';
+export 'package:reader_mode/src/process_html/extensions/element/link_density.dart';
+export 'package:reader_mode/src/process_html/extensions/element/mark_data_tables.dart';
+export 'package:reader_mode/src/process_html/extensions/element/remove_nodes.dart';
+export 'package:reader_mode/src/process_html/extensions/element/rewrite_sources.dart';
+export 'package:reader_mode/src/process_html/extensions/element/row_column_count.dart';
+export 'package:reader_mode/src/process_html/extensions/element/swapped_tag_name.dart';
+export 'package:reader_mode/src/process_html/extensions/element/text_density.dart';
