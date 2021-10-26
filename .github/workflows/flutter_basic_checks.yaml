@@ -1,0 +1,35 @@
+#name: Basic checks
+#
+#env:
+#  FLUTTER_VERSION: "2.2.3"
+#
+#on:
+#  pull_request:
+#    branches:
+#      - '*'
+#
+#jobs:
+#  Basic-checks:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#
+#      - name: Install Flutter
+#        uses: britannio/action-install-flutter@v1
+#        with:
+#          version: $FLUTTER_VERSION
+#
+#      - name: Get Packages
+#        run: |
+#          flutter pub get
+#          dart pub get
+#      - name: Flutter format
+#        run: |
+#          flutter format lib --set-exit-if-changed
+#          flutter format test --set-exit-if-changed
+#      - name: Flutter Analyze
+#        run: |
+#          flutter analyze lib test
+#      - name: Run Tests
+#        run: |
+#          flutter test
