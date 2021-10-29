@@ -1,5 +1,5 @@
 import 'package:html/dom.dart' as dom;
-import 'package:reader_mode/src/process_html/objects/parser_options.dart';
+import 'package:xayn_readability/src/process_html/objects/parser_options.dart';
 
 /// An extension on [dom.Element] to facilitate parsing
 extension ElementCleanClassesExtension on dom.Element {

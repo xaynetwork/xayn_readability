@@ -1,6 +1,6 @@
 import 'package:html/dom.dart' as dom;
 
-import 'package:reader_mode/src/process_html/extensions/extensions.dart';
+import 'package:xayn_readability/src/process_html/extensions/extensions.dart';
 
 final RegExp _imageExtensionsMatcher =
     RegExp(r'\.(jpg|jpeg|png|webp)', caseSensitive: false);

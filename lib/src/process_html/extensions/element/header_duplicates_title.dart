@@ -1,7 +1,7 @@
 import 'package:html/dom.dart' as dom;
 
-import 'package:reader_mode/src/process_html/extensions/node_extensions.dart';
-import 'package:reader_mode/src/process_html/extensions/string_extensions.dart';
+import 'package:xayn_readability/src/process_html/extensions/node_extensions.dart';
+import 'package:xayn_readability/src/process_html/extensions/string_extensions.dart';
 
 /// An extension on [dom.Element] to facilitate parsing
 extension ElementHeaderDuplicatesTitleExtension on dom.Element {

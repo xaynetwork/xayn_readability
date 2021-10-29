@@ -1,6 +1,6 @@
 import 'package:html/dom.dart' as dom;
 
-import 'package:reader_mode/src/process_html/extensions/extensions.dart';
+import 'package:xayn_readability/src/process_html/extensions/extensions.dart';
 
 /// Runs a simplification algorithm on the tree from [element]
 void simplifyNestedElements(final dom.Element element) {

@@ -1,11 +1,11 @@
 import 'dart:math';
 
 import 'package:html/dom.dart' as dom;
-import 'package:reader_mode/src/process_html/objects/flag.dart';
-import 'package:reader_mode/src/process_html/extensions/extensions.dart';
-import 'package:reader_mode/src/process_html/objects/parser_options.dart';
-import 'package:reader_mode/src/process_html/steps/check_byline.dart';
-import 'package:reader_mode/src/process_html/steps/prep_article.dart';
+import 'package:xayn_readability/src/process_html/objects/flag.dart';
+import 'package:xayn_readability/src/process_html/extensions/extensions.dart';
+import 'package:xayn_readability/src/process_html/objects/parser_options.dart';
+import 'package:xayn_readability/src/process_html/steps/check_byline.dart';
+import 'package:xayn_readability/src/process_html/steps/prep_article.dart';
 
 final RegExp _unlikelyCandidatesMatcher = RegExp(
     r'-ad-|ai2html|banner|breadcrumbs|combx|comment|community|cover-wrap|disqus|extra|footer|gdpr|header|legends|menu|related|remark|replies|rss|shoutbox|sidebar|skyscraper|social|sponsor|supplemental|ad-break|agegate|pagination|pager|popup|yom-remote',

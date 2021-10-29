@@ -1,6 +1,6 @@
 import 'package:html/dom.dart' as dom;
 
-import 'package:reader_mode/src/process_html/extensions/string_extensions.dart';
+import 'package:xayn_readability/src/process_html/extensions/string_extensions.dart';
 
 /// constant representation of a [CheckBylineResult] which is _not_ a byline.
 const notAByLineResult = CheckBylineResult.isNot();

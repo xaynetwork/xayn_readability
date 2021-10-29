@@ -1,8 +1,7 @@
 import 'package:html/dom.dart' as dom;
-import 'package:reader_mode/reader_mode.dart';
-
-import 'package:reader_mode/src/process_html/process_html.dart';
-import 'package:reader_mode/src/widgets/objects/process_html_result.dart';
+import 'package:xayn_readability/src/process_html/process_html.dart';
+import 'package:xayn_readability/src/widgets/objects/process_html_result.dart';
+import 'package:xayn_readability/xayn_readability.dart';
 
 /// Given the provided [payload], creates a [ProcessHtmlResult] which contains
 /// a reader-mode representation of a HTML Document.

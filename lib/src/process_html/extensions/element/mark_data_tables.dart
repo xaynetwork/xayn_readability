@@ -1,5 +1,5 @@
 import 'package:html/dom.dart' as dom;
-import 'package:reader_mode/src/process_html/extensions/node_extensions.dart';
+import 'package:xayn_readability/src/process_html/extensions/node_extensions.dart';
 
 import 'row_column_count.dart';
 

@@ -1,8 +1,8 @@
 import 'package:html/dom.dart' as dom;
-import 'package:reader_mode/src/process_html/extensions/extensions.dart';
-import 'package:reader_mode/src/process_html/objects/parser_options.dart';
-import 'package:reader_mode/src/process_html/steps/fix_relative_uris.dart';
-import 'package:reader_mode/src/process_html/steps/simplify_nested_elements.dart';
+import 'package:xayn_readability/src/process_html/extensions/extensions.dart';
+import 'package:xayn_readability/src/process_html/objects/parser_options.dart';
+import 'package:xayn_readability/src/process_html/steps/fix_relative_uris.dart';
+import 'package:xayn_readability/src/process_html/steps/simplify_nested_elements.dart';
 
 /// A collection of actions which run as a post-process
 void postProcess(final dom.Document document, final dom.Element element,

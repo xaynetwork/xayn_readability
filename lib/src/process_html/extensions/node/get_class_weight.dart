@@ -1,5 +1,5 @@
 import 'package:html/dom.dart' as dom;
-import 'package:reader_mode/src/process_html/objects/flag.dart';
+import 'package:xayn_readability/src/process_html/objects/flag.dart';
 
 final RegExp _positiveMatcher = RegExp(
     r'article|body|content|entry|hentry|h-entry|main|page|pagination|post|text|blog|story',

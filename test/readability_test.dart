@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:html/dom.dart' as dom;
-import 'package:reader_mode/reader_mode.dart';
-import 'package:reader_mode/src/process_html/process_html.dart';
+import 'package:xayn_readability/src/process_html/process_html.dart';
+import 'package:xayn_readability/xayn_readability.dart';
 
 // todo: update tests to match expected.html instead of generated.html
 // the problem is the different html formatting, so we would need to deep-match

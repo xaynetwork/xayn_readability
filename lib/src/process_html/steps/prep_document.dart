@@ -1,6 +1,6 @@
 import 'package:html/dom.dart' as dom;
-import 'package:reader_mode/src/process_html/extensions/extensions.dart';
-import 'package:reader_mode/src/process_html/steps/replace_brs.dart';
+import 'package:xayn_readability/src/process_html/extensions/extensions.dart';
+import 'package:xayn_readability/src/process_html/steps/replace_brs.dart';
 
 /// Prepares the [document] to become a reader mode article
 void prepDocument(final dom.Document document) {

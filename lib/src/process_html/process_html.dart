@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:html/dom.dart' as dom;
-import 'package:reader_mode/src/process_html/objects/parser_options.dart';
-import 'package:reader_mode/src/process_html/steps/steps.dart';
+import 'package:xayn_readability/src/process_html/objects/parser_options.dart';
+import 'package:xayn_readability/src/process_html/steps/steps.dart';
 
 /// Takes a [document] and parses it to become a new reader mode article.
 /// Use [options] to modify the way the parser runs.

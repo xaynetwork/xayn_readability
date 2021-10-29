@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:collection/collection.dart';
 import 'package:html/dom.dart' as dom;
 
-import 'package:reader_mode/src/process_html/steps/get_all_nodes_with_tag.dart';
+import 'package:xayn_readability/src/process_html/steps/get_all_nodes_with_tag.dart';
 
 final RegExp _jsonLdArticleTypesMatcher = RegExp(
     r'^Article|AdvertiserContentArticle|NewsArticle|AnalysisNewsArticle|AskPublicNewsArticle|BackgroundNewsArticle|OpinionNewsArticle|ReportageNewsArticle|ReviewNewsArticle|Report|SatiricalArticle|ScholarlyArticle|MedicalScholarlyArticle|SocialMediaPosting|BlogPosting|LiveBlogPosting|DiscussionForumPosting|TechArticle|APIReference$',

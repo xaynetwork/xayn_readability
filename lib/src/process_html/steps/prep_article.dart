@@ -1,6 +1,6 @@
 import 'package:html/dom.dart' as dom;
-import 'package:reader_mode/src/process_html/extensions/extensions.dart';
-import 'package:reader_mode/src/process_html/objects/flag.dart';
+import 'package:xayn_readability/src/process_html/extensions/extensions.dart';
+import 'package:xayn_readability/src/process_html/objects/flag.dart';
 
 final RegExp _shareElementsMatcher =
     RegExp(r'(\b|_)(share|sharedaddy)(\b|_)', caseSensitive: false);

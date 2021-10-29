@@ -4,10 +4,10 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http_client/http_client.dart';
-import 'package:reader_mode/reader_mode.dart';
-import 'package:reader_mode/src/widgets/client/client.dart';
-import 'package:reader_mode/src/widgets/jobs/make_readable.dart';
-import 'package:reader_mode/src/widgets/objects/process_html_result.dart';
+import 'package:xayn_readability/src/widgets/client/client.dart';
+import 'package:xayn_readability/src/widgets/jobs/make_readable.dart';
+import 'package:xayn_readability/src/widgets/objects/process_html_result.dart';
+import 'package:xayn_readability/xayn_readability.dart';
 
 /// The signature of [HttpLoader.builder] functions.
 typedef ChildBuilder = Widget Function(BuildContext, ProcessHtmlResult?);

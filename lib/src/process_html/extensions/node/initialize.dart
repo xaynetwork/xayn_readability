@@ -1,6 +1,6 @@
 import 'package:html/dom.dart' as dom;
-import 'package:reader_mode/src/process_html/extensions/node_extensions.dart';
-import 'package:reader_mode/src/process_html/objects/flag.dart';
+import 'package:xayn_readability/src/process_html/extensions/node_extensions.dart';
+import 'package:xayn_readability/src/process_html/objects/flag.dart';
 
 /// An extension on [dom.Node] to facilitate parsing
 extension NodeInitializeExtension on dom.Node {

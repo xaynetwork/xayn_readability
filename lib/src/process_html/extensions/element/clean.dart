@@ -1,5 +1,5 @@
 import 'package:html/dom.dart' as dom;
-import 'package:reader_mode/src/process_html/util/shared_matchers.dart';
+import 'package:xayn_readability/src/process_html/util/shared_matchers.dart';
 import 'remove_nodes.dart';
 
 /// An extension on [dom.Element] to facilitate parsing

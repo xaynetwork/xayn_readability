@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import 'package:reader_mode/reader_mode.dart';
+import 'package:xayn_readability/xayn_readability.dart';
 
 void main() {
   runApp(const MyApp());

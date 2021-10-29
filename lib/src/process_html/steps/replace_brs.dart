@@ -1,6 +1,6 @@
 import 'package:html/dom.dart' as dom;
 
-import 'package:reader_mode/src/process_html/extensions/extensions.dart';
+import 'package:xayn_readability/src/process_html/extensions/extensions.dart';
 
 /// Replaces BR tags
 void replaceBrs(final dom.Document document) {

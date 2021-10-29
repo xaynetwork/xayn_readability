@@ -29,7 +29,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  reader_mode:
+  xayn_readability:
     path: ../
 
 
