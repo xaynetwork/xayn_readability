@@ -75,6 +75,7 @@ class HttpLoader extends StatefulWidget {
   /// A flag to either enable or disable jsonLd parsing
   final bool disableJsonLd;
 
+  /// The default text style which is used to display textual content
   final TextStyle? textStyle;
 
   /// Constructs a new [HttpLoader] [Widget]

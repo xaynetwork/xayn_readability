@@ -65,6 +65,9 @@ class ReaderMode extends StatefulWidget {
   /// The text style of the rendered html textual contents
   final TextStyle? textStyle;
 
+  /// To implement custom widgets for displaying specific html tags,
+  /// pass a factory builder, see [flutter_widget_from_html_core](https://pub.dev/packages/flutter_widget_from_html_core)
+  /// for more information
   final FactoryBuilder? factoryBuilder;
 
   /// A list of css classes which should not be stripped
