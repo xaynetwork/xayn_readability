@@ -46,7 +46,8 @@ extension ElementMarkDataTablesExtension on dom.Element {
 
       // If the table has a descendant with any of these tags, consider a data table:
       const dataTableDescendants = ['col', 'colgroup', 'tfoot', 'thead', 'th'];
-      descendantExists(tag) => table.getElementsByTagName(tag).isNotEmpty;
+      descendantExists(String tag) =>
+          table.getElementsByTagName(tag).isNotEmpty;
 
       if (dataTableDescendants.any(descendantExists)) {
         table.updateDataTableValue(true);

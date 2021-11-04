@@ -179,7 +179,7 @@ class _HttpLoaderState extends State<HttpLoader> {
                   classesToPreserve: widget.classesToPreserve,
                   baseUri: widget.uri.replace(
                       pathSegments: const [],
-                      queryParameters: const {},
+                      queryParameters: const <String, dynamic>{},
                       fragment: null),
                 ),
               ));
@@ -226,7 +226,7 @@ class _HttpLoaderState extends State<HttpLoader> {
     final response = await client.send(Request(widget.method, url));
 
     if (response.body is String) {
-      return response.body;
+      return response.body as String;
     }
 
     writeToBuffer(StringBuffer buffer, String part) => buffer..write(part);
