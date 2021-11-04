@@ -503,22 +503,30 @@ _GrabArticleResult grabArticle(
 
       if (flag.isActive(Flag.stripUnlikely)) {
         flag.removeFlag(Flag.stripUnlikely);
-        attempts
-            .add({'articleContent': articleContent, 'textLength': textLength});
+        attempts.add(<String, dynamic>{
+          'articleContent': articleContent,
+          'textLength': textLength
+        });
       } else if (flag.isActive(Flag.weightClasses)) {
         flag.removeFlag(Flag.weightClasses);
-        attempts
-            .add({'articleContent': articleContent, 'textLength': textLength});
+        attempts.add(<String, dynamic>{
+          'articleContent': articleContent,
+          'textLength': textLength
+        });
       } else if (flag.isActive(Flag.cleanConditionally)) {
         flag.removeFlag(Flag.cleanConditionally);
-        attempts
-            .add({'articleContent': articleContent, 'textLength': textLength});
+        attempts.add(<String, dynamic>{
+          'articleContent': articleContent,
+          'textLength': textLength
+        });
       } else {
-        attempts
-            .add({'articleContent': articleContent, 'textLength': textLength});
+        attempts.add(<String, dynamic>{
+          'articleContent': articleContent,
+          'textLength': textLength
+        });
         // No luck after removing flags, just return the longest text we found during the different loops
         attempts.sort((a, b) {
-          return b['textLength'] - a['textLength'];
+          return (b['textLength'] as int) - (a['textLength'] as int);
         });
 
         // But first check if we actually have something
@@ -526,7 +534,7 @@ _GrabArticleResult grabArticle(
           return const _GrabArticleResult.empty();
         }
 
-        articleContent = attempts.first['articleContent'];
+        articleContent = attempts.first['articleContent'] as dom.Element;
         parseSuccessful = true;
       }
     }

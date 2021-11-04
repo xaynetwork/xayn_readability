@@ -23,20 +23,20 @@ Metadata getJsonLd(final dom.Document document) {
     try {
       // Strip CDATA markers if present
       final content = jsonLdElement.text.replaceAll(markersExp, '');
-      Map? parsed = json.decode(content);
-      final String? contextValue = parsed!['@context'];
+      Map? parsed = json.decode(content) as Map?;
+      final String? contextValue = parsed!['@context'] as String?;
       var metadata = const Metadata();
 
       if (contextValue == null || !schemaExp.hasMatch(contextValue)) {
         return metadata;
       }
 
-      final String? typeValue = parsed['@type'];
-      final graphValue = parsed['@graph'];
+      final String? typeValue = parsed['@type'] as String?;
+      final graphValue = parsed['@graph'] as Iterable?;
 
-      if (typeValue == null && graphValue is Iterable) {
+      if (typeValue == null && graphValue != null) {
         parsed = graphValue.cast<Map>().firstWhereOrNull((it) {
-          final String typeValue = it['@type'] ?? '';
+          final String typeValue = it['@type'] as String? ?? '';
 
           return _jsonLdArticleTypesMatcher.hasMatch(typeValue);
         });
@@ -44,37 +44,42 @@ Metadata getJsonLd(final dom.Document document) {
 
       if (parsed == null ||
           !parsed.containsKey('@type') ||
-          !_jsonLdArticleTypesMatcher.hasMatch(parsed['@type'])) {
+          !_jsonLdArticleTypesMatcher.hasMatch(parsed['@type'] as String)) {
         return metadata;
       }
 
-      final name = parsed['name'],
-          headline = parsed['headline'],
-          author = parsed['author'],
-          description = parsed['description'],
-          publisher = parsed['publisher'];
+      final name = parsed['name'] as String?,
+          headline = parsed['headline'] as String?,
+          authorAsString = parsed['author'] as String?,
+          authorAsIterable = parsed['author'] as Iterable?,
+          description = parsed['description'] as String?,
+          publisher = parsed['publisher'] as String?;
 
       if (name is String) {
         metadata = metadata.withTitle(name.trim());
       } else if (headline is String) {
         metadata = metadata.withTitle(headline.trim());
       }
-      if (author != null) {
-        if (author is String) {
-          metadata = metadata.withByline(author.trim());
-        } else if (author is Iterable &&
-            author.isNotEmpty &&
-            author.first is String) {
-          metadata = metadata.withByline(
-              author.whereType<String>().map((it) => it.trim()).join(', '));
-        }
+
+      if (authorAsString != null) {
+        metadata = metadata.withByline(authorAsString.trim());
+      } else if (authorAsIterable != null &&
+          authorAsIterable.isNotEmpty &&
+          authorAsIterable.first is String) {
+        metadata = metadata.withByline(authorAsIterable
+            .whereType<String>()
+            .map((it) => it.trim())
+            .join(', '));
       }
+
       if (description is String) {
         metadata = metadata.withExcerpt(description.trim());
       }
+
       if (publisher is String) {
         metadata = metadata.withSiteName(publisher.trim());
       }
+
       return metadata;
     } catch (err) {
       log(err.toString());
