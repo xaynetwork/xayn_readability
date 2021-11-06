@@ -16,7 +16,7 @@ void postProcess(final dom.Document document, final dom.Element element,
 
   element.cleanClasses(options);
 
-  if (baseUri != null) {
+  if (baseUri != null && baseUri.hasScheme) {
     element.rewriteSources(document, baseUri);
   }
 
