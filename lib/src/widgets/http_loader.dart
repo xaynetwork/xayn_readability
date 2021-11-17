@@ -177,10 +177,12 @@ class _HttpLoaderState extends State<HttpLoader> {
                 options: ParserOptions(
                   disableJsonLd: widget.disableJsonLd,
                   classesToPreserve: widget.classesToPreserve,
-                  baseUri: widget.uri.replace(
-                      pathSegments: const [],
-                      queryParameters: const <String, dynamic>{},
-                      fragment: null),
+                  baseUri: widget.uri.scheme != 'data'
+                      ? widget.uri.replace(
+                          pathSegments: const [],
+                          queryParameters: const <String, dynamic>{},
+                          fragment: null)
+                      : null,
                 ),
               ));
         }
