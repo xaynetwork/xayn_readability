@@ -224,8 +224,10 @@ class _HttpLoaderState extends State<HttpLoader> {
   }
 
   Future<String> _loadUri() async {
+    const decoder = Utf8Decoder();
+
     if (widget.uri.scheme == 'data') {
-      return UriData.fromUri(widget.uri).contentAsString();
+      return decoder.convert(UriData.fromUri(widget.uri).contentAsBytes());
     }
 
     final url = widget.uri.toString();
@@ -238,7 +240,7 @@ class _HttpLoaderState extends State<HttpLoader> {
     writeToBuffer(StringBuffer buffer, String part) => buffer..write(part);
 
     final buffer = await response.bodyAsStream!
-        .transform(const Utf8Decoder())
+        .transform(decoder)
         .fold(StringBuffer(), writeToBuffer);
 
     return buffer.toString();
