@@ -107,13 +107,13 @@ class _HttpLoaderState extends State<HttpLoader> {
       <Uri, _BuiltChildFromHtml>{};
 
   @override
-  void initState() {
+  void didChangeDependencies() {
     client = createHttpClient(userAgent: widget.userAgent);
     child = widget.builder(context, null);
 
     _fetchResult();
 
-    super.initState();
+    super.didChangeDependencies();
   }
 
   @override
@@ -222,6 +222,10 @@ class _HttpLoaderState extends State<HttpLoader> {
   }
 
   Future<String> _loadUri() async {
+    if (widget.uri.scheme == 'data') {
+      return UriData.fromUri(widget.uri).contentAsString();
+    }
+
     final url = widget.uri.toString();
     final response = await client.send(Request(widget.method, url));
 

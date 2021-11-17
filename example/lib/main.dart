@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
     //readerModeController.loadUri(Uri.parse('https://de.m.wikipedia.org/wiki/Berlin'));
-    readerModeController.loadUri(Uri.parse(
+    readerModeController.loadUri(Uri.dataFromString(
         'https://www.ign.com/articles/metroid-dread-review-nintendo-switch'));
 
     super.initState();
