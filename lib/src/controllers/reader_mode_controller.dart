@@ -35,18 +35,23 @@ class ReaderModeController extends ChangeNotifier {
 
   /// Pushes a new [Uri] into the inner stack and immediately sets the current
   /// [entryIndex] to this new [Uri].
-  bool loadUri(Uri uri) {
-    if (uri.toString() == _uriAndPosition.toString()) {
+  bool loadUri(Uri uri, {double position = 0.0}) {
+    final uriAndPosition = _UriWithScrollPosition(
+      uri: uri,
+      position: position,
+    );
+
+    if (uriAndPosition.toString() == _uriAndPosition.toString()) {
       return false;
     }
 
-    _uriAndPosition = _UriWithScrollPosition.initial(uri);
+    _uriAndPosition = uriAndPosition;
 
     for (var i = _entries.length - 1; i >= _index + 1; i--) {
       _entries.removeAt(i);
     }
 
-    _entries.add(_UriWithScrollPosition.initial(uri));
+    _entries.add(uriAndPosition);
     _previousIndex = _index;
     _index = _entries.length - 1;
 
