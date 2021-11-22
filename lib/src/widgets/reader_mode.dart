@@ -110,7 +110,7 @@ class _ReaderModeState extends State<ReaderMode> {
     _controller = widget.controller;
     _attachController(_controller);
 
-    _controller.addListener(_scrollListener);
+    _scrollController.addListener(_scrollListener);
 
     super.initState();
   }
@@ -118,7 +118,7 @@ class _ReaderModeState extends State<ReaderMode> {
   @override
   void dispose() {
     _detachController(_controller);
-    _controller.removeListener(_scrollListener);
+    _scrollController.removeListener(_scrollListener);
     super.dispose();
   }
 
