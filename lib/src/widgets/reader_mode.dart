@@ -108,8 +108,9 @@ class _ReaderModeState extends State<ReaderMode> {
   @override
   void initState() {
     _controller = widget.controller;
-
     _attachController(_controller);
+
+    _controller.addListener(_scrollListener);
 
     super.initState();
   }
@@ -117,7 +118,7 @@ class _ReaderModeState extends State<ReaderMode> {
   @override
   void dispose() {
     _detachController(_controller);
-
+    _controller.removeListener(_scrollListener);
     super.dispose();
   }
 
@@ -156,6 +157,9 @@ class _ReaderModeState extends State<ReaderMode> {
       disableJsonLd: widget.disableJsonLd,
     );
   }
+
+  void _scrollListener() =>
+      _controller.updateScrollPositionForCurrentIndex(_controller.position);
 
   Widget Function(BuildContext, ProcessHtmlResult?) _builder(Uri uri) =>
       (BuildContext context, ProcessHtmlResult? result) {

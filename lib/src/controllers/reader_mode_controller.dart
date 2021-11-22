@@ -66,6 +66,13 @@ class ReaderModeController extends ChangeNotifier {
         _UriWithScrollPosition(uri: uri, position: value);
   }
 
+  /// Stores a scroll offset value for the current [Uri]
+  void updateScrollPositionForCurrentIndex(double value) {
+    if (_uriAndPosition != null) {
+      _entries[_index] = _uriAndPosition!.copyWith(position: value);
+    }
+  }
+
   /// A handler which allows overwriting the current history.
   /// It is however impossible to remove the current [uri], you may only
   /// overwrite previous and next history entries, relative to the current [uri].
@@ -161,4 +168,9 @@ class _UriWithScrollPosition {
   });
 
   const _UriWithScrollPosition.initial(this.uri) : position = 0;
+
+  _UriWithScrollPosition copyWith({double? position}) => _UriWithScrollPosition(
+        uri: uri,
+        position: position ?? this.position,
+      );
 }
