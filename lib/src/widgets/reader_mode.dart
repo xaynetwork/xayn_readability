@@ -158,8 +158,10 @@ class _ReaderModeState extends State<ReaderMode> {
     );
   }
 
-  void _scrollListener() =>
-      _controller.updateScrollPositionForCurrentIndex(_controller.position);
+  void _scrollListener() {
+    final value = _scrollController.position.pixels;
+    _controller.updateScrollPositionForCurrentIndex(value);
+  }
 
   Widget Function(BuildContext, ProcessHtmlResult?) _builder(Uri uri) =>
       (BuildContext context, ProcessHtmlResult? result) {
