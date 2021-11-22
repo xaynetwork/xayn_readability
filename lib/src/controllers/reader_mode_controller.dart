@@ -69,7 +69,8 @@ class ReaderModeController extends ChangeNotifier {
   /// Stores a scroll offset value for the current [Uri]
   void updateScrollPositionForCurrentIndex(double value) {
     if (_uriAndPosition != null) {
-      _entries[_index] = _uriAndPosition!.copyWith(position: value);
+      _uriAndPosition = _uriAndPosition!.copyWith(position: value);
+      _entries[_index] = _uriAndPosition!;
     }
   }
 
