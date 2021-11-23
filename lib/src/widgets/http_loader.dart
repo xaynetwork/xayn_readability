@@ -201,23 +201,25 @@ class _HttpLoaderState extends State<HttpLoader> {
         }
       }
 
-      setState(() {
-        if (onFetching != null) {
-          onFetching(false);
-        }
-
-        if (existingChild != null) {
-          child = existingChild.child;
-        } else {
-          if (readerModeContents == null) {
-            child = widget.errorBuilder(context, error);
-          } else {
-            child = widget.builder(context, readerModeContents);
-            builtChildren[widget.uri] = _BuiltChildFromHtml(
-                child: child, processedHtmlResult: readerModeContents);
+      if (mounted) {
+        setState(() {
+          if (onFetching != null) {
+            onFetching(false);
           }
-        }
-      });
+
+          if (existingChild != null) {
+            child = existingChild.child;
+          } else {
+            if (readerModeContents == null) {
+              child = widget.errorBuilder(context, error);
+            } else {
+              child = widget.builder(context, readerModeContents);
+              builtChildren[widget.uri] = _BuiltChildFromHtml(
+                  child: child, processedHtmlResult: readerModeContents);
+            }
+          }
+        });
+      }
     } catch (e) {
       log('error: $e');
     }
