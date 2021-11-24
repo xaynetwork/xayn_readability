@@ -146,7 +146,6 @@ class _ReaderModeState extends State<ReaderMode> {
     return HttpLoader(
       method: widget.method,
       userAgent: widget.userAgent,
-      textStyle: widget.textStyle,
       onProcessedHtml: _onProcessedHtml,
       onNavigation: _onNavigation,
       onFetching: _onFetching,
