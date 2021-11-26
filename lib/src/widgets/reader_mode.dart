@@ -239,6 +239,7 @@ class _ReaderModeState extends State<ReaderMode> {
   Widget _buildHtmlWidget({required String html, required Uri uri}) {
     return HtmlWidget(
       html,
+      buildAsync: false,
       factoryBuilder: widget.factoryBuilder,
       renderMode: ListViewMode(controller: _scrollController),
       textStyle: widget.textStyle,
