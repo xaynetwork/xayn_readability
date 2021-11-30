@@ -75,16 +75,12 @@ class HttpLoader extends StatefulWidget {
   /// A flag to either enable or disable jsonLd parsing
   final bool disableJsonLd;
 
-  /// The default text style which is used to display textual content
-  final TextStyle? textStyle;
-
   /// Constructs a new [HttpLoader] [Widget]
   const HttpLoader({
     Key? key,
     required this.builder,
     required this.errorBuilder,
     required this.uri,
-    this.textStyle,
     this.onProcessedHtml,
     this.onNavigation,
     this.onFetching,
@@ -122,11 +118,8 @@ class _HttpLoaderState extends State<HttpLoader> {
       _fetchResult(oldWidget.uri);
     }
 
-    if (widget.textStyle != oldWidget.textStyle) {
-      final existingChild = builtChildren[widget.uri];
-
-      child = widget.builder(context, existingChild?.processedHtmlResult);
-    }
+    final existingChild = builtChildren[widget.uri];
+    child = widget.builder(context, existingChild?.processedHtmlResult);
 
     super.didUpdateWidget(oldWidget);
   }
