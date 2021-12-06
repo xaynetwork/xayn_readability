@@ -174,4 +174,7 @@ class _UriWithScrollPosition {
         uri: uri,
         position: position ?? this.position,
       );
+
+  @override
+  String toString() => uri.toString();
 }
