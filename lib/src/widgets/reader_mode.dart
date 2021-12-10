@@ -110,7 +110,6 @@ class _ReaderModeState extends State<ReaderMode> {
   late final ScrollController _scrollController;
   double _scrollOffsetToRestore = .0;
   bool _isCurrentlyFetching = false;
-  Uri? _currentUri;
 
   @override
   void initState() {
@@ -149,7 +148,7 @@ class _ReaderModeState extends State<ReaderMode> {
 
   @override
   Widget build(BuildContext context) {
-    final uri = _currentUri;
+    final uri = _controller.uri;
 
     if (uri == null) {
       return Container();
@@ -267,9 +266,7 @@ class _ReaderModeState extends State<ReaderMode> {
   }
 
   void _onController() {
-    setState(() {
-      _currentUri = _controller.uri;
-    });
+    setState(() {});
   }
 
   void _detachController(ReaderModeController controller) {
