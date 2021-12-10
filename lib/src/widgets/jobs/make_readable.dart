@@ -1,6 +1,4 @@
 import 'package:html/dom.dart' as dom;
-import 'package:xayn_readability/src/process_html/process_html.dart';
-import 'package:xayn_readability/src/widgets/objects/process_html_result.dart';
 import 'package:xayn_readability/xayn_readability.dart';
 
 /// Given the provided [payload], creates a [ProcessHtmlResult] which contains
