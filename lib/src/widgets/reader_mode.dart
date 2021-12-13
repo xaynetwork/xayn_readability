@@ -13,6 +13,9 @@ typedef OnImageTap = void Function(ImageMetadata?);
 /// The signature of [ReaderMode.factoryBuilder] functions.
 typedef FactoryBuilder = WidgetFactory Function()?;
 
+/// The signature of [ReaderMode.onScroll] functions.
+typedef ScrollHandler = void Function(double position);
+
 /// The default error text that will be displayed, should [ReaderMode] fail
 /// to display the contents.
 const String kReaderModeStandardExceptionMessage =
@@ -76,6 +79,9 @@ class ReaderMode extends StatefulWidget {
   /// Set to true if you wish to skip jsonLd parsing
   final bool disableJsonLd;
 
+  /// Triggers whenever content is scrolled
+  final ScrollHandler? onScroll;
+
   /// Constructs a new [ReaderMode] [Widget]
   const ReaderMode({
     Key? key,
@@ -92,6 +98,7 @@ class ReaderMode extends StatefulWidget {
     this.factoryBuilder,
     this.classesToPreserve = const [],
     this.disableJsonLd = true,
+    this.onScroll,
   }) : super(key: key);
 
   @override
@@ -100,17 +107,17 @@ class ReaderMode extends StatefulWidget {
 
 class _ReaderModeState extends State<ReaderMode> {
   late ReaderModeController _controller;
-  final ScrollController _scrollController =
-      ScrollController(keepScrollOffset: false);
+  late final ScrollController _scrollController;
   double _scrollOffsetToRestore = .0;
   bool _isCurrentlyFetching = false;
 
   @override
   void initState() {
     _controller = widget.controller;
-    _attachController(_controller);
+    _scrollController = ScrollController(keepScrollOffset: false);
 
-    _scrollController.addListener(_scrollListener);
+    _attachController(_controller);
+    _scrollController.addListener(_observeScrolling);
 
     super.initState();
   }
@@ -118,7 +125,10 @@ class _ReaderModeState extends State<ReaderMode> {
   @override
   void dispose() {
     _detachController(_controller);
-    _scrollController.removeListener(_scrollListener);
+    _scrollController.removeListener(_observeScrolling);
+
+    _scrollController.dispose();
+
     super.dispose();
   }
 
@@ -155,11 +165,6 @@ class _ReaderModeState extends State<ReaderMode> {
       uri: uri,
       disableJsonLd: widget.disableJsonLd,
     );
-  }
-
-  void _scrollListener() {
-    final value = _scrollController.position.pixels;
-    _controller.updateScrollPositionForCurrentIndex(value);
   }
 
   Widget Function(BuildContext, ProcessHtmlResult?) _builder(Uri uri) =>
@@ -271,5 +276,12 @@ class _ReaderModeState extends State<ReaderMode> {
 
   void _attachController(ReaderModeController controller) {
     controller.addListener(_onController);
+  }
+
+  void _observeScrolling() {
+    final value = _scrollController.position.pixels;
+    _controller.updateScrollPositionForCurrentIndex(value);
+
+    widget.onScroll?.call(value);
   }
 }

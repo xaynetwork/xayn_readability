@@ -230,8 +230,7 @@ _GrabArticleResult grabArticle(
 
       // Initialize and score ancestors.
       for (var it in ancestors) {
-        if (it.ancestor is! dom.Element ||
-            it.ancestor.parentNode is! dom.Element) {
+        if (it.ancestor.parentNode is! dom.Element) {
           continue;
         }
 
