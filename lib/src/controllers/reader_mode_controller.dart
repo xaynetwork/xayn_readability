@@ -35,18 +35,23 @@ class ReaderModeController extends ChangeNotifier {
 
   /// Pushes a new [Uri] into the inner stack and immediately sets the current
   /// [entryIndex] to this new [Uri].
-  bool loadUri(Uri uri) {
-    if (uri.toString() == _uriAndPosition.toString()) {
+  bool loadUri(Uri uri, {double position = 0.0}) {
+    final uriAndPosition = _UriWithScrollPosition(
+      uri: uri,
+      position: position,
+    );
+
+    if (uriAndPosition.toString() == _uriAndPosition.toString()) {
       return false;
     }
 
-    _uriAndPosition = _UriWithScrollPosition.initial(uri);
+    _uriAndPosition = uriAndPosition;
 
     for (var i = _entries.length - 1; i >= _index + 1; i--) {
       _entries.removeAt(i);
     }
 
-    _entries.add(_UriWithScrollPosition.initial(uri));
+    _entries.add(uriAndPosition);
     _previousIndex = _index;
     _index = _entries.length - 1;
 
@@ -59,6 +64,14 @@ class ReaderModeController extends ChangeNotifier {
   void setScrollPositionForPreviousIndex(Uri uri, double value) {
     _entries[_previousIndex] =
         _UriWithScrollPosition(uri: uri, position: value);
+  }
+
+  /// Stores a scroll offset value for the current [Uri]
+  void updateScrollPositionForCurrentIndex(double value) {
+    if (_uriAndPosition != null) {
+      _uriAndPosition = _uriAndPosition!.copyWith(position: value);
+      _entries[_index] = _uriAndPosition!;
+    }
   }
 
   /// A handler which allows overwriting the current history.
@@ -156,4 +169,12 @@ class _UriWithScrollPosition {
   });
 
   const _UriWithScrollPosition.initial(this.uri) : position = 0;
+
+  _UriWithScrollPosition copyWith({double? position}) => _UriWithScrollPosition(
+        uri: uri,
+        position: position ?? this.position,
+      );
+
+  @override
+  String toString() => uri.toString();
 }
