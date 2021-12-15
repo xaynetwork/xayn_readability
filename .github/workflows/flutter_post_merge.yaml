@@ -1,7 +1,7 @@
 name: Post merge checks
 
 env:
-  FLUTTER_VERSION: "2.5.2"
+  FLUTTER_VERSION: '2.8.0'
 
 on:
   push:
