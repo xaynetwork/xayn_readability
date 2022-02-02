@@ -82,6 +82,12 @@ class ReaderMode extends StatefulWidget {
   /// Triggers whenever content is scrolled
   final ScrollHandler? onScroll;
 
+  /// Custom styles for rendering html
+  final CustomStylesBuilder? customStylesBuilder;
+
+  /// Custom widgets for rendering html
+  final CustomWidgetBuilder? customWidgetBuilder;
+
   /// Constructs a new [ReaderMode] [Widget]
   const ReaderMode({
     Key? key,
@@ -99,6 +105,8 @@ class ReaderMode extends StatefulWidget {
     this.classesToPreserve = const [],
     this.disableJsonLd = true,
     this.onScroll,
+    this.customStylesBuilder,
+    this.customWidgetBuilder,
   }) : super(key: key);
 
   @override
@@ -263,6 +271,8 @@ class _ReaderModeState extends State<ReaderMode> {
 
         return false;
       },
+      customStylesBuilder: widget.customStylesBuilder,
+      customWidgetBuilder: widget.customWidgetBuilder,
     );
   }
 
