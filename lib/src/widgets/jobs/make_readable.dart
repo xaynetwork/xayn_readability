@@ -37,6 +37,7 @@ ProcessHtmlResult makeReadable(final MakeReadablePayload payload) {
 
   return ProcessHtmlResult(
     contents: result?.html,
+    favicon: result?.favicon,
     lang: lang,
     textSize: result?.textSize,
     themeColor: themeColor,

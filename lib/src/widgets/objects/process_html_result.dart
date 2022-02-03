@@ -26,11 +26,15 @@ class ProcessHtmlResult {
   /// The metadata that was found in the original Document
   final Metadata? metadata;
 
+  /// The link to the favicon
+  final String? favicon;
+
   /// Constructor to create a new [ProcessHtmlResult] with values.
   const ProcessHtmlResult({
+    required this.themeColor,
+    this.favicon,
     this.contents,
     this.lang,
-    required this.themeColor,
     this.description,
     this.title,
     this.author,
@@ -42,6 +46,7 @@ class ProcessHtmlResult {
   ProcessHtmlResult withOtherContent(String? contents, {int? textSize}) =>
       ProcessHtmlResult(
         contents: contents,
+        favicon: favicon,
         lang: lang,
         themeColor: themeColor,
         description: description,

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:html/dom.dart' as dom;
 import 'package:xayn_readability/src/process_html/objects/parser_options.dart';
+import 'package:xayn_readability/src/process_html/steps/grab_favicon.dart';
 import 'package:xayn_readability/src/process_html/steps/steps.dart';
 
 /// Takes a [document] and parses it to become a new reader mode article.
@@ -13,6 +14,9 @@ _ProcessedHtml? parse(
   try {
     var metadata =
         options.disableJsonLd ? const Metadata() : getJsonLd(document);
+
+    // grab favicon link
+    final favicon = grabFavicon(document, options);
 
     // Unwrap image from noscript
     unwrapNoscriptImages(document);
@@ -37,6 +41,7 @@ _ProcessedHtml? parse(
 
     return _ProcessedHtml(
       html: element.innerHtml,
+      favicon: favicon,
       textSize: element.text.length,
       metadata: metadata,
     );
@@ -47,11 +52,13 @@ _ProcessedHtml? parse(
 
 class _ProcessedHtml {
   final String html;
+  final String favicon;
   final int textSize;
   final Metadata metadata;
 
   const _ProcessedHtml({
     required this.html,
+    required this.favicon,
     required this.textSize,
     required this.metadata,
   });
