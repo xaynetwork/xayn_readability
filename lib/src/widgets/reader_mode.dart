@@ -88,6 +88,9 @@ class ReaderMode extends StatefulWidget {
   /// Custom widgets for rendering html
   final CustomWidgetBuilder? customWidgetBuilder;
 
+  /// Optional padding, used by the internal renderer
+  final EdgeInsets? rendererPadding;
+
   /// Constructs a new [ReaderMode] [Widget]
   const ReaderMode({
     Key? key,
@@ -107,6 +110,7 @@ class ReaderMode extends StatefulWidget {
     this.onScroll,
     this.customStylesBuilder,
     this.customWidgetBuilder,
+    this.rendererPadding,
   }) : super(key: key);
 
   @override
@@ -253,7 +257,10 @@ class _ReaderModeState extends State<ReaderMode> {
       html,
       buildAsync: false,
       factoryBuilder: widget.factoryBuilder,
-      renderMode: ListViewMode(controller: _scrollController),
+      renderMode: ListViewMode(
+        controller: _scrollController,
+        padding: widget.rendererPadding,
+      ),
       textStyle: widget.textStyle,
       onTapImage: widget.onImageTap,
       onTapUrl: (url) {
