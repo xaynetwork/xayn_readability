@@ -22,8 +22,12 @@ ProcessHtmlResult makeReadable(final MakeReadablePayload payload) {
     final value = themeColorElement.attributes['content'];
 
     if (value != null) {
-      themeColor =
-          int.tryParse('ff${value.substring(1)}', radix: 16) ?? 0xffffffff;
+      try {
+        themeColor =
+            int.tryParse('ff${value.substring(1)}', radix: 16) ?? 0xffffffff;
+      } catch (e) {
+        // ignore
+      }
     }
   }
 

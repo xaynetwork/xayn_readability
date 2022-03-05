@@ -48,6 +48,8 @@ _ProcessedHtml? parse(
   } catch (e, s) {
     log('$e $s');
   }
+
+  return null;
 }
 
 class _ProcessedHtml {
