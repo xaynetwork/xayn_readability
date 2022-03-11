@@ -9,7 +9,7 @@ String grabFavicon(final dom.Document document, final ParserOptions options) {
     'apple-touch-icon',
     'apple-touch-icon-precomposed',
   ];
-  final selectors = rel.map((it) => 'link[target="$it"]');
+  final selectors = rel.map((it) => 'link[rel="$it"]');
   final favIconNodes = document.querySelectorAll(selectors.join(', '));
   var url = '/favicon.ico';
 
