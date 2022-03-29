@@ -1,6 +1,7 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:xayn_readability/src/controllers/reader_mode_controller.dart';
+import 'package:xayn_readability/src/widgets/custom_list_view_mode.dart';
 import 'package:xayn_readability/src/widgets/http_loader.dart';
 import 'package:xayn_readability/src/widgets/objects/process_html_result.dart';
 
@@ -91,6 +92,17 @@ class ReaderMode extends StatefulWidget {
   /// Optional padding, used by the internal renderer
   final EdgeInsets? rendererPadding;
 
+  /// [Scrollbar] properties
+  ///
+  /// [Scrollbar.thickness]
+  final double? scrollbarThickness;
+
+  /// [Scrollbar.radius]
+  final Radius? scrollbarRadius;
+
+  /// [Scrollbar.isAlwaysShown]
+  final bool scrollbarIsAlwaysShown;
+
   /// Constructs a new [ReaderMode] [Widget]
   const ReaderMode({
     Key? key,
@@ -111,6 +123,9 @@ class ReaderMode extends StatefulWidget {
     this.customStylesBuilder,
     this.customWidgetBuilder,
     this.rendererPadding,
+    this.scrollbarThickness,
+    this.scrollbarRadius,
+    this.scrollbarIsAlwaysShown = true,
   }) : super(key: key);
 
   @override
@@ -257,9 +272,12 @@ class _ReaderModeState extends State<ReaderMode> {
       html,
       buildAsync: false,
       factoryBuilder: widget.factoryBuilder,
-      renderMode: ListViewMode(
+      renderMode: CustomListViewMode(
         controller: _scrollController,
         padding: widget.rendererPadding,
+        scrollbarThickness: widget.scrollbarThickness,
+        scrollbarRadius: widget.scrollbarRadius,
+        scrollbarIsAlwaysShown: widget.scrollbarIsAlwaysShown,
       ),
       textStyle: widget.textStyle,
       onTapImage: widget.onImageTap,
