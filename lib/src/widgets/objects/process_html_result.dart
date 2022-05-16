@@ -29,6 +29,9 @@ class ProcessHtmlResult {
   /// The link to the favicon
   final String? favicon;
 
+  /// The link to an embedded video, if any
+  final Uri? video;
+
   /// Constructor to create a new [ProcessHtmlResult] with values.
   const ProcessHtmlResult({
     required this.themeColor,
@@ -39,6 +42,7 @@ class ProcessHtmlResult {
     this.title,
     this.author,
     this.metadata,
+    this.video,
     int? textSize,
   }) : textSize = textSize ?? 0;
 
@@ -54,5 +58,6 @@ class ProcessHtmlResult {
         author: author,
         metadata: metadata,
         textSize: textSize ?? this.textSize,
+        video: video,
       );
 }

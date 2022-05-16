@@ -5,8 +5,8 @@ import 'package:html/dom.dart' as dom;
 /// An extension on [dom.Element] to facilitate parsing
 extension ElementRowColumnCountExtension on dom.Element {
   /// Calculates how many rows and columns exist within table rows,
-  /// then returns the values in a [_RowsAndColumns] tuple.
-  _RowsAndColumns get rowAndColumnCount {
+  /// then returns the values in a [RowsAndColumns] tuple.
+  RowsAndColumns get rowAndColumnCount {
     var rows = 0;
     var columns = 0;
     final trs = getElementsByTagName('tr');
@@ -30,12 +30,18 @@ extension ElementRowColumnCountExtension on dom.Element {
       columns = max(columns, columnsInThisRow);
     }
 
-    return _RowsAndColumns(rows: rows, cols: columns);
+    return RowsAndColumns(rows: rows, cols: columns);
   }
 }
 
-class _RowsAndColumns {
-  final int rows, cols;
+/// Tuple containing the amount of [rows] and [cols] in a Table Element
+class RowsAndColumns {
+  /// table rows
+  final int rows;
 
-  const _RowsAndColumns({required this.rows, required this.cols});
+  /// table columns
+  final int cols;
+
+  /// Constructs a new tuple holding [rows] and [cols]
+  const RowsAndColumns({required this.rows, required this.cols});
 }

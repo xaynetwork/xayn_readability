@@ -5,13 +5,13 @@ import 'package:collection/collection.dart';
 /// This controller allows manipulating and navigating through the history stack
 /// of the reader mode instance.
 class ReaderModeController extends ChangeNotifier {
-  final List<_UriWithScrollPosition> _entries = <_UriWithScrollPosition>[];
-  _UriWithScrollPosition? _uriAndPosition;
+  final List<UriWithScrollPosition> _entries = <UriWithScrollPosition>[];
+  UriWithScrollPosition? _uriAndPosition;
   int _index = 0, _previousIndex = 0;
 
   /// Returns a list containing the current history
-  Iterable<_UriWithScrollPosition> get entries =>
-      List<_UriWithScrollPosition>.unmodifiable(_entries);
+  Iterable<UriWithScrollPosition> get entries =>
+      List<UriWithScrollPosition>.unmodifiable(_entries);
 
   /// Returns the current [Uri]
   Uri? get uri => _uriAndPosition?.uri;
@@ -36,7 +36,7 @@ class ReaderModeController extends ChangeNotifier {
   /// Pushes a new [Uri] into the inner stack and immediately sets the current
   /// [entryIndex] to this new [Uri].
   bool loadUri(Uri uri, {double position = 0.0}) {
-    final uriAndPosition = _UriWithScrollPosition(
+    final uriAndPosition = UriWithScrollPosition(
       uri: uri,
       position: position,
     );
@@ -62,8 +62,7 @@ class ReaderModeController extends ChangeNotifier {
 
   /// Stores a scroll offset value for the previous [Uri]
   void setScrollPositionForPreviousIndex(Uri uri, double value) {
-    _entries[_previousIndex] =
-        _UriWithScrollPosition(uri: uri, position: value);
+    _entries[_previousIndex] = UriWithScrollPosition(uri: uri, position: value);
   }
 
   /// Stores a scroll offset value for the current [Uri]
@@ -86,9 +85,9 @@ class ReaderModeController extends ChangeNotifier {
 
     _entries
       ..clear()
-      ..addAll(back.map((it) => _UriWithScrollPosition.initial(it)))
+      ..addAll(back.map((it) => UriWithScrollPosition.initial(it)))
       ..add(currentUri)
-      ..addAll(forward.map((it) => _UriWithScrollPosition.initial(it)));
+      ..addAll(forward.map((it) => UriWithScrollPosition.initial(it)));
 
     _index = _previousIndex = _entries.length - forward.length - 1;
 
@@ -159,18 +158,25 @@ class ReaderModeController extends ChangeNotifier {
   }
 }
 
-class _UriWithScrollPosition {
+/// Tuple class containing the [position] for a given [uri].
+class UriWithScrollPosition {
+  /// The url that was loaded
   final Uri uri;
+
+  /// The last position in the scrollable body
   final double position;
 
-  const _UriWithScrollPosition({
+  /// Creates a new tuple
+  const UriWithScrollPosition({
     required this.uri,
     required this.position,
   });
 
-  const _UriWithScrollPosition.initial(this.uri) : position = 0;
+  /// Creates a new tuple from the starting position of zero
+  const UriWithScrollPosition.initial(this.uri) : position = 0;
 
-  _UriWithScrollPosition copyWith({double? position}) => _UriWithScrollPosition(
+  /// Clones this tuple with different values
+  UriWithScrollPosition copyWith({double? position}) => UriWithScrollPosition(
         uri: uri,
         position: position ?? this.position,
       );
