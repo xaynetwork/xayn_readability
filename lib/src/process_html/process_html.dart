@@ -7,7 +7,7 @@ import 'package:xayn_readability/src/process_html/steps/steps.dart';
 
 /// Takes a [document] and parses it to become a new reader mode article.
 /// Use [options] to modify the way the parser runs.
-_ProcessedHtml? parse(
+ProcessedHtml? parse(
   final dom.Document document, {
   final ParserOptions options = const ParserOptions(),
 }) {
@@ -39,7 +39,7 @@ _ProcessedHtml? parse(
       metadata = metadata.withByline(byLine);
     }
 
-    return _ProcessedHtml(
+    return ProcessedHtml(
       html: element.innerHtml,
       favicon: favicon,
       textSize: element.text.length,
@@ -52,13 +52,22 @@ _ProcessedHtml? parse(
   return null;
 }
 
-class _ProcessedHtml {
+/// A container Object, holding information about the processed html data
+class ProcessedHtml {
+  /// The html, in raw String format
   final String html;
+
+  /// A link to the favicon
   final String favicon;
+
+  /// Holds the text size, used in the html
   final int textSize;
+
+  /// Contains metadata, found in the html header
   final Metadata metadata;
 
-  const _ProcessedHtml({
+  /// Constructs a new container Object
+  const ProcessedHtml({
     required this.html,
     required this.favicon,
     required this.textSize,

@@ -11,7 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_widget_from_html_core: ^0.8.5+1
+  collection: ^1.16.0
+  flutter_widget_from_html_core: ^0.8.5+3
   html: ^0.15.0
   http_client: ^1.5.1
 
@@ -20,4 +21,4 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
-  flutter_lints: ^1.0.4
+  flutter_lints: ^2.0.1

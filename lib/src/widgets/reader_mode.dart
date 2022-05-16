@@ -249,7 +249,7 @@ class _ReaderModeState extends State<ReaderMode> {
     }
 
     if (!isFetching) {
-      WidgetsBinding.instance!.addPostFrameCallback((_) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
         if (_scrollController.hasClients) {
           _scrollController.jumpTo(_scrollOffsetToRestore);
         }

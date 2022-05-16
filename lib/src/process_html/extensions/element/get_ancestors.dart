@@ -3,14 +3,14 @@ import 'package:html/dom.dart' as dom;
 /// An extension on [dom.Element] to facilitate parsing
 extension ElementGetAncestorsExtension on dom.Element {
   /// Returns a list of ancestors, relative to this [dom.Element]
-  List<_AncestorWithLevel> getAncestors([int maxDepth = 0]) {
-    var i = 0, ancestors = <_AncestorWithLevel>[];
+  List<AncestorWithLevel> getAncestors([int maxDepth = 0]) {
+    var i = 0, ancestors = <AncestorWithLevel>[];
     dom.Node? node = this;
 
     while (node?.parent != null) {
       final ancestor = node!.parent!;
 
-      ancestors.add(_AncestorWithLevel(ancestor: ancestor, level: i));
+      ancestors.add(AncestorWithLevel(ancestor: ancestor, level: i));
 
       if (maxDepth > 0 && ++i == maxDepth) {
         break;
@@ -23,11 +23,16 @@ extension ElementGetAncestorsExtension on dom.Element {
   }
 }
 
-class _AncestorWithLevel {
+/// Pairs html Elements and the tree level at which they were encountered
+class AncestorWithLevel {
+  /// References the ancestor Element
   final dom.Element ancestor;
+
+  /// Hold the tree level at which [ancestor] was encountered
   final int level;
 
-  const _AncestorWithLevel({
+  /// Creates a new tuple holding [ancestor] and [level]
+  const AncestorWithLevel({
     required this.ancestor,
     required this.level,
   });

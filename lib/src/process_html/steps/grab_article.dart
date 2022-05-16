@@ -17,7 +17,7 @@ final RegExp _candidateMatcher = RegExp(
 /// The main readability transform handler.
 /// Attempts to convert the HTML from [document] into a reader mode digest version.
 /// Pass [options] to adjust certain parameters which are used to run the transformer.
-_GrabArticleResult grabArticle(
+GrabArticleResult grabArticle(
   final dom.Document document, {
   required ParserOptions options,
 }) {
@@ -530,7 +530,7 @@ _GrabArticleResult grabArticle(
 
         // But first check if we actually have something
         if (!attempts.first.containsKey('textLength')) {
-          return const _GrabArticleResult.empty();
+          return const GrabArticleResult.empty();
         }
 
         articleContent = attempts.first['articleContent'] as dom.Element;
@@ -560,21 +560,28 @@ _GrabArticleResult grabArticle(
         return false;
       });
 
-      return _GrabArticleResult(element: articleContent, byLine: articleByline);
+      return GrabArticleResult(element: articleContent, byLine: articleByline);
     }
   }
 }
 
-class _GrabArticleResult {
+/// Tuple holding the parsed article as an Element, and includes information about
+/// the author as [byline], if at all found.
+class GrabArticleResult {
+  /// The processed html as an Element
   final dom.Element? element;
+
+  /// Reference to the author of the html, if found
   final String? byLine;
 
-  const _GrabArticleResult({
+  /// Constructs a new tuple holding the article as Element, and the author as [byline], if at all encountered.
+  const GrabArticleResult({
     required this.element,
     required this.byLine,
   });
 
-  const _GrabArticleResult.empty()
+  /// Constructs a void result
+  const GrabArticleResult.empty()
       : element = null,
         byLine = null;
 }
