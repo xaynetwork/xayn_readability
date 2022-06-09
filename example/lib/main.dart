@@ -63,7 +63,7 @@ class _HomeState extends State<Home> {
 
     final floatingActionButton = FloatingActionButton(
       onPressed: loadRandomWebPage,
-      child: const Icon(Icons.refresh),
+      child: const Icon(Icons.autorenew),
     );
 
     final topNavigation = TopNavigationWidget(
