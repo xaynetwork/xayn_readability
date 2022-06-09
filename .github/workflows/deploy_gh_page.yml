@@ -1,0 +1,66 @@
+name: Deploy example to gh-page
+
+env:
+  FLUTTER_VERSION: '3.0.0'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Flutter
+        uses: britannio/action-install-flutter@v1
+        with:
+          version: $FLUTTER_VERSION
+
+      - name: Get Packages
+        run: |
+          flutter pub get
+        working-directory: ./example
+
+      - name: Flutter format
+        run: |
+          flutter format ./ --set-exit-if-changed
+        working-directory: ./example
+
+      - name: Flutter Analyze
+        run: |
+          flutter analyze lib
+        working-directory: ./example
+
+      - name: Build release project
+        run: flutter build web
+        working-directory: ./example
+
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v2
+        with:
+          name: production-files
+          path: ./example/build/web
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: production-files
+          path: ./example/build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./example/build
