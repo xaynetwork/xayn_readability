@@ -1,5 +1,5 @@
 name: example
-description: A new Flutter project.
+description: Load multiple webpages in webview and reader mode side-by-side.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -32,7 +32,7 @@ dependencies:
   xayn_readability:
     path: ../
 
-  webview_flutter: ^3.0.4
+  webviewx: ^0.2.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
