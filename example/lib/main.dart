@@ -1,10 +1,8 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:example/data/random_article_web_pages.dart';
 import 'package:example/web_view_page.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:xayn_readability/xayn_readability.dart';
 
 import 'widgets/bottom_navigation_widget.dart';
@@ -41,8 +39,6 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    if (Platform.isAndroid) WebView.platform = AndroidWebView();
-
     readerModeController.addListener(() {
       setState(() {
         textEditingController.text = readerModeController.uri.toString();
