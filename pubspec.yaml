@@ -18,7 +18,7 @@ dependencies:
   xayn_readability_core:
     git:
       url: git@github.com:xaynetwork/xayn_readability_core.git
-      ref: 371b87f8c966f964793b276555ea5cc44cc4b32a
+      ref: 7a7f329df28f95e4dd150c723aeaa635737b4f38
 
 dev_dependencies:
   flutter_test:
