@@ -15,6 +15,10 @@ dependencies:
   flutter_widget_from_html_core: ^0.8.5+3
   html: ^0.15.0
   http_client: ^1.5.1
+  xayn_readability_core:
+    git:
+      url: git@github.com:xaynetwork/xayn_readability_core.git
+      ref: 371b87f8c966f964793b276555ea5cc44cc4b32a
 
 dev_dependencies:
   flutter_test:

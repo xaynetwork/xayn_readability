@@ -1,4 +1,4 @@
-import 'package:xayn_readability/src/process_html/steps/get_json_ld.dart';
+import 'package:xayn_readability_core/xayn_readability_core.dart';
 
 /// A class which contains all output of an operation which transformed original HTML into readable HTML
 class ProcessHtmlResult {
