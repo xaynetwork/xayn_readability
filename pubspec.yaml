@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   collection: ^1.16.0
-  flutter_widget_from_html_core: ^0.8.5+3
+  flutter_widget_from_html_core: ^0.9.1
   html: ^0.15.0
   http_client: ^1.5.1
 
